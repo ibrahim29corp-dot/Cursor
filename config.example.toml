@@ -1,0 +1,29 @@
+# Copy to config.toml and edit. Every key is optional.
+
+symbols = ["SPY", "QQQ", "AAPL", "MSFT", "NVDA", "AMD", "TSLA", "META"]
+
+# Tried in order; the first one that signals on a bar wins.
+# Choices: trend, range, momentum, breakout, pullback, gap, price_action, scalping
+strategies = ["breakout", "momentum", "range"]
+
+# --- Risk management ---
+risk_per_trade_pct = 0.5   # lose at most 0.5% of the account if a stop is hit
+max_position_pct   = 20.0  # never put more than 20% of the account in one stock
+reward_risk        = 2.0   # take profit at 2x the stop distance
+max_daily_loss_pct = 2.0   # stop for the day after losing 2%
+max_trades_per_day = 6
+max_open_positions = 3
+pdt_protect        = true  # under $25k: max 3 day trades per 5 business days
+slippage_pct       = 0.02
+
+# --- Session, US/Eastern ---
+no_entries_before = "09:35"
+no_entries_after  = "15:30"
+flatten_at        = "15:55"  # everything is sold before the close
+
+# --- Live trading ---
+# Real orders need BOTH `live = true` here AND `python -m daybot live --live`.
+live = false
+paper_starting_cash = 10000
+journal_path = "trades.csv"
+state_path = "state.json"

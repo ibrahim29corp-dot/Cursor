@@ -1,0 +1,6 @@
+pandas>=2.2
+numpy>=1.26
+yfinance>=0.2.40
+robin_stocks>=3.4
+pyotp>=2.9
+pytest>=8.0
