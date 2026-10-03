@@ -1,0 +1,190 @@
+<template id="01-hook-template">
+  <div data-hf-id="hf-isis" id="root" data-composition-id="01-hook" data-start="0" data-duration="3.5" data-width="1920" data-height="1080">
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+    <style>
+      @font-face {
+        font-family: "EB Garamond";
+        src: url("assets/fonts/EBGaramond-400.woff2") format("woff2");
+        font-weight: 400;
+        font-style: normal;
+      }
+      @font-face {
+        font-family: "Inter";
+        src: url("assets/fonts/Inter-400.woff2") format("woff2");
+        font-weight: 400;
+        font-style: normal;
+      }
+      @font-face {
+        font-family: "JetBrains Mono";
+        src: url("assets/fonts/JetBrainsMono-400.woff2") format("woff2");
+        font-weight: 400;
+        font-style: normal;
+      }
+
+      #root {
+        position: relative;
+        width: 1920px;
+        height: 1080px;
+        overflow: hidden;
+        container-type: size;
+      }
+
+      .f01-hook-ground {
+        position: absolute;
+        inset: 0;
+        background: #eeeeee;
+      }
+
+      .f01-hook-stage {
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 250px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+      }
+
+      .f01-hook-kicker {
+        font-family: "JetBrains Mono", monospace;
+        font-size: 28px;
+        font-weight: 500;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        color: #000000;
+        margin-bottom: 44px;
+      }
+      .f01-hook-spike {
+        color: #0000ee;
+        margin-right: 0.5em;
+      }
+
+      .f01-hook-headline {
+        font-family: "EB Garamond", Georgia, serif;
+        font-size: 7.3cqw;
+        font-weight: 400;
+        line-height: 1.02;
+        letter-spacing: -0.022em;
+        color: #000000;
+        white-space: nowrap;
+      }
+
+      .f01-hook-lead {
+        margin-top: 64px;
+        font-family: "Inter", sans-serif;
+        font-size: 2.4cqw;
+        font-weight: 400;
+        line-height: 1.5;
+        color: #000000;
+        white-space: nowrap;
+      }
+
+      .f01-hook-w {
+        display: inline-block;
+        will-change: transform;
+      }
+
+      .f01-hook-safe-wrap {
+        position: relative;
+        display: inline-block;
+      }
+      .f01-hook-safe {
+        position: relative;
+        z-index: 1;
+        color: #0000ee;
+      }
+      .f01-hook-underline {
+        position: absolute;
+        left: -4px;
+        right: -4px;
+        bottom: 2px;
+        height: 4px;
+        background: #0000ee;
+        border-radius: 2px;
+        transform-origin: left center;
+        z-index: 0;
+      }
+    </style>
+
+    <div data-hf-id="hf-jsqi" id="f01-hook-ground" class="clip f01-hook-ground" data-start="0" data-duration="3.5" data-track-index="0"></div>
+
+    <div data-hf-id="hf-eozx" id="f01-hook-stage" class="clip f01-hook-stage" data-start="0" data-duration="3.5" data-track-index="1">
+      <div data-hf-id="hf-n1w1" class="f01-hook-kicker" id="f01-hook-kicker"><span data-hf-id="hf-phwo" class="f01-hook-spike">✱</span>For documentation</div>
+
+      <div data-hf-id="hf-5d2i" class="f01-hook-headline" id="f01-hook-headline">
+        <span data-hf-id="hf-ff2e" class="f01-hook-w f01-hook-hw" id="f01-hook-h1">Writing</span>
+        <span data-hf-id="hf-78ds" class="f01-hook-w f01-hook-hw" id="f01-hook-h2">the</span>
+        <span data-hf-id="hf-3v5i" class="f01-hook-w f01-hook-hw" id="f01-hook-h3a">docs</span><span data-hf-id="hf-cqjz" class="f01-hook-w f01-hook-hw" id="f01-hook-h3b">?</span>
+      </div>
+
+      <div data-hf-id="hf-45q2" class="f01-hook-lead" id="f01-hook-lead">
+        <span data-hf-id="hf-dc5c" class="f01-hook-w f01-hook-lw">You</span>
+        <span data-hf-id="hf-o2nt" class="f01-hook-w f01-hook-lw">need</span>
+        <span data-hf-id="hf-6gmo" class="f01-hook-w f01-hook-lw">a</span>
+        <span data-hf-id="hf-hhvp" class="f01-hook-w f01-hook-lw">link</span>
+        <span data-hf-id="hf-0hwa" class="f01-hook-w f01-hook-lw">that's</span>
+        <span data-hf-id="hf-5srl" class="f01-hook-w f01-hook-lw f01-hook-safe-wrap" id="f01-hook-safe-wrap"><span data-hf-id="hf-x1fn" class="f01-hook-underline" id="f01-hook-underline"></span><span data-hf-id="hf-aqr7" class="f01-hook-safe">safe</span></span>
+        <span data-hf-id="hf-8xhs" class="f01-hook-w f01-hook-lw">to</span>
+        <span data-hf-id="hf-p37a" class="f01-hook-w f01-hook-lw">print.</span>
+      </div>
+    </div>
+
+    <script>
+      (function () {
+        window.__timelines = window.__timelines || {};
+        var tl = gsap.timeline({ paused: true });
+        var F = 1 / 60;
+        var root = document.querySelector('[data-composition-id="01-hook"]');
+        var byId = function (id) { return root.querySelector('[id="' + id + '"]'); };
+        var byClass = function (c) { return Array.prototype.slice.call(root.querySelectorAll('[class~="' + c + '"]')); };
+
+        var headWords = byClass("f01-hook-hw");
+        var leadWords = byClass("f01-hook-lw");
+        var underline = byId("f01-hook-underline");
+        var kicker = byId("f01-hook-kicker");
+
+        tl.set(headWords.concat(leadWords), { opacity: 0 }, 0);
+        tl.set(underline, { scaleX: 0 }, 0);
+
+        // Scene 1 — kicker fades up, headline waterfalls in (power3 settle)
+        tl.fromTo(kicker, { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.4, ease: "power2.out" }, 0.05);
+
+        var headSpec = [
+          { el: byId("f01-hook-h1"), y: 80, d: 0.22, gap: 2 * F },
+          { el: byId("f01-hook-h2"), y: 45, d: 0.17, gap: -F },
+          { el: byId("f01-hook-h3a"), y: 70, d: 0.2, gap: -F },
+          { el: byId("f01-hook-h3b"), y: 48, d: 0.13, gap: 0 }
+        ];
+        var t = 0.3;
+        headSpec.forEach(function (s) {
+          tl.set(s.el, { opacity: 1, y: s.y }, t);
+          tl.to(s.el, { y: 0, duration: s.d, ease: "power3.out" }, t);
+          t = t + s.d + s.gap;
+        });
+
+        // Scene 2 — headline lifts to make room; lead line waterfalls word by word
+        tl.to([kicker, byId("f01-hook-headline")], { y: -26, duration: 0.55, ease: "power3.out" }, 1.1);
+
+        var lt = 1.22;
+        leadWords.forEach(function (el) {
+          var isSafe = el.id === "f01-hook-safe-wrap";
+          var isLight = el.textContent.trim().length <= 2;
+          var y = isSafe ? 64 : isLight ? 34 : 44;
+          var d = isSafe ? 0.19 : isLight ? 0.12 : 0.15;
+          tl.set(el, { opacity: 1, y: y }, lt);
+          tl.to(el, { y: 0, duration: d, ease: "power3.out" }, lt);
+          lt = lt + d - F;
+          if (isSafe) {
+            tl.fromTo(underline, { scaleX: 0 }, { scaleX: 1, duration: 0.36, ease: "power2.out" }, lt);
+          }
+        });
+
+        // Scene 3 (2.4–3.0s) — hold the read; no drift
+        tl.set({}, {}, 3);
+
+        window.__timelines["01-hook"] = tl;
+      })();
+    </script>
+  </div>
+</template>
