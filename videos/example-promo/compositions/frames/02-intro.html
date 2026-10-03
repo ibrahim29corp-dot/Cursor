@@ -1,0 +1,316 @@
+<template>
+  <div data-hf-id="hf-uj6i" id="root" data-composition-id="02-intro" data-start="0" data-duration="4.6" data-width="1920" data-height="1080">
+    <style>
+      @font-face {
+        font-family: "EB Garamond";
+        src: url("assets/fonts/EBGaramond-400.woff2") format("woff2"), local("EB Garamond");
+        font-weight: 400;
+        font-style: normal;
+      }
+      @font-face {
+        font-family: "Inter";
+        src: url("assets/fonts/Inter-400.woff2") format("woff2"), local("Inter");
+        font-weight: 400;
+        font-style: normal;
+      }
+      @font-face {
+        font-family: "JetBrains Mono";
+        src: url("assets/fonts/JetBrainsMono-400.woff2") format("woff2"), local("JetBrains Mono");
+        font-weight: 400 500;
+        font-style: normal;
+      }
+      @font-face {
+        font-family: "f02-intro-cyrillic";
+        src: local("Inter"), local("Noto Sans"), local("DejaVu Sans");
+        font-weight: 400;
+      }
+      @font-face {
+        font-family: "f02-intro-arabic";
+        src: local("Noto Sans Arabic"), local("Noto Naskh Arabic"), local("DejaVu Sans");
+        font-weight: 400;
+      }
+      @font-face {
+        font-family: "f02-intro-cjk";
+        src: local("Noto Sans CJK SC"), local("Noto Sans SC"), local("WenQuanYi Micro Hei"),
+          local("Droid Sans Fallback");
+        font-weight: 400;
+      }
+
+      #root {
+        position: relative;
+        width: 1920px;
+        height: 1080px;
+        overflow: hidden;
+      }
+      #f02-intro-ground {
+        position: absolute;
+        inset: 0;
+        background: #eeeeee;
+      }
+      #f02-intro-stage {
+        position: absolute;
+        inset: 0;
+        container-type: size;
+      }
+      #f02-intro-wordmark {
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 236px;
+        text-align: center;
+        font-family: "EB Garamond", Georgia, serif;
+        font-weight: 400;
+        font-size: 9.9cqw;
+        line-height: 0.98;
+        letter-spacing: -0.028em;
+        color: #000000;
+        transform-origin: 50% 60%;
+        will-change: transform, opacity;
+      }
+      #f02-intro-rule {
+        position: absolute;
+        left: 334px;
+        top: 476px;
+        width: 1252px;
+        height: 2px;
+        overflow: visible;
+      }
+      #f02-intro-rule line {
+        fill: none;
+        stroke: rgba(0, 0, 0, 0.12);
+        stroke-width: 1;
+      }
+      #f02-intro-row {
+        position: absolute;
+        left: 334px;
+        top: 516px;
+        width: 1252px;
+        height: 64px;
+        display: flex;
+        align-items: center;
+        gap: 32px;
+      }
+      #f02-intro-kicker {
+        flex: 0 0 120px;
+        height: 44px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: 1px solid rgba(0, 0, 0, 0.2);
+        border-radius: 9999px;
+        font-family: "JetBrains Mono", ui-monospace, monospace;
+        font-weight: 500;
+        font-size: 26px;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        color: rgba(0, 0, 0, 0.7);
+        white-space: nowrap;
+        will-change: opacity;
+      }
+      #f02-intro-kicker {
+        position: relative;
+      }
+      .f02-intro-code {
+        position: absolute;
+        inset: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding-left: 0.16em;
+      }
+      .f02-intro-step {
+        will-change: transform;
+      }
+      #f02-intro-ticker {
+        position: relative;
+        flex: 0 0 1100px;
+        height: 64px;
+        overflow: hidden;
+      }
+      #f02-intro-stack {
+        position: relative;
+        top: 64px;
+        display: flex;
+        flex-direction: column;
+      }
+      .f02-intro-item {
+        height: 64px;
+        flex: 0 0 64px;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        font-family: "Inter", "f02-intro-cyrillic", "f02-intro-arabic", "f02-intro-cjk", sans-serif;
+        font-weight: 400;
+        font-size: 2.08cqw;
+        line-height: 1.5;
+        color: rgba(0, 0, 0, 0.6);
+        white-space: nowrap;
+      }
+      .f02-intro-item[dir="rtl"] {
+        font-family: "f02-intro-arabic", "Inter", sans-serif;
+        unicode-bidi: isolate;
+      }
+      .f02-intro-item[lang="zh"] {
+        font-family: "f02-intro-cjk", "Inter", sans-serif;
+      }
+      .f02-intro-item[lang="ru"] {
+        font-family: "f02-intro-cyrillic", "Inter", sans-serif;
+      }
+      #f02-intro-follow {
+        position: absolute;
+        left: 486px;
+        top: 592px;
+        height: 64px;
+        display: flex;
+        align-items: center;
+        gap: 0.28em;
+        font-family: "Inter", sans-serif;
+        font-weight: 400;
+        font-size: 2.08cqw;
+        line-height: 1.5;
+        color: #000000;
+        white-space: nowrap;
+      }
+      .f02-intro-word {
+        display: inline-block;
+        will-change: transform, opacity;
+      }
+      .f02-intro-word.f02-intro-link {
+        color: #0000ee;
+      }
+    </style>
+
+    <div data-hf-id="hf-0frf" id="f02-intro-ground" class="clip" data-start="0" data-duration="4.6" data-track-index="0"></div>
+
+    <div data-hf-id="hf-vavf" id="f02-intro-stage" class="clip" data-start="0" data-duration="4.6" data-track-index="1">
+      <div data-hf-id="hf-gifl" id="f02-intro-wordmark">example.com</div>
+
+      <svg data-hf-id="hf-o9nl" id="f02-intro-rule" viewBox="0 0 1252 2" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+        <line data-hf-id="hf-agh3" id="f02-intro-rule-line" x1="0" y1="1" x2="1252" y2="1" />
+      </svg>
+
+      <div data-hf-id="hf-cnkd" id="f02-intro-row">
+        <div data-hf-id="hf-3zkg" id="f02-intro-kicker">
+          <span data-hf-id="hf-6fbf" class="f02-intro-code">AR</span>
+          <span data-hf-id="hf-z4i2" class="f02-intro-code">ZH</span>
+          <span data-hf-id="hf-iom0" class="f02-intro-code">FR</span>
+          <span data-hf-id="hf-i7o1" class="f02-intro-code">RU</span>
+          <span data-hf-id="hf-ib98" class="f02-intro-code">ES</span>
+          <span data-hf-id="hf-momj" class="f02-intro-code">EN</span>
+        </div>
+        <div data-hf-id="hf-rpf4" id="f02-intro-ticker" data-layout-allow-overflow="">
+          <div data-hf-id="hf-fyx0" class="f02-intro-step"><div data-hf-id="hf-g24c" class="f02-intro-step"><div data-hf-id="hf-ev79" class="f02-intro-step">
+          <div data-hf-id="hf-f9ia" class="f02-intro-step"><div data-hf-id="hf-h91f" class="f02-intro-step"><div data-hf-id="hf-hncg" class="f02-intro-step">
+          <div data-hf-id="hf-t275" id="f02-intro-stack">
+            <div data-hf-id="hf-qokm" class="f02-intro-item" dir="rtl" lang="ar">هذا النطاق مُخصص للاستخدام في أمثلة التوثيق</div>
+            <div data-hf-id="hf-qjij" class="f02-intro-item" lang="zh">该域名仅用于文档示例</div>
+            <div data-hf-id="hf-lx9g" class="f02-intro-item" lang="fr">Réservé à des exemples de documentation</div>
+            <div data-hf-id="hf-x2i5" class="f02-intro-item" lang="ru">Для использования в примерах документации</div>
+            <div data-hf-id="hf-ois1" class="f02-intro-item" lang="es">Para uso en ejemplos de documentación</div>
+            <div data-hf-id="hf-mkw6" class="f02-intro-item" lang="en" id="f02-intro-item-en">Reserved for documentation examples.</div>
+          </div>
+          </div></div></div>
+          </div></div></div>
+        </div>
+      </div>
+
+      <div data-hf-id="hf-er7w" id="f02-intro-follow">
+        <span data-hf-id="hf-i8rk" class="f02-intro-word f02-intro-link">No</span>
+        <span data-hf-id="hf-hn64" class="f02-intro-word f02-intro-link">permission</span>
+        <span data-hf-id="hf-7qjc" class="f02-intro-word">needed.</span>
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+    <script>
+      (function () {
+        const tl = gsap.timeline({ paused: true });
+
+        tl.fromTo(
+          document.getElementById("f02-intro-wordmark"),
+          { scale: 0.6, opacity: 0, y: 12 },
+          { scale: 1, opacity: 1, y: 0, duration: 0.7, ease: "power3.out" },
+          0.05,
+        );
+
+        const ruleLine = document.getElementById("f02-intro-rule-line");
+        const ruleLen = 1252;
+        tl.fromTo(
+          ruleLine,
+          { strokeDasharray: ruleLen, strokeDashoffset: ruleLen },
+          { strokeDasharray: ruleLen, strokeDashoffset: 0, duration: 0.55, ease: "power2.out" },
+          0.4,
+        );
+
+        tl.fromTo(
+          document.getElementById("f02-intro-kicker"),
+          { opacity: 0 },
+          { opacity: 1, duration: 0.3, ease: "power1.out" },
+          0.75,
+        );
+
+        // Each step wrapper carries one spring; nesting composes their translates
+        // additively, so no onUpdate callback is needed (seek suppresses callbacks).
+        const ITEM_HEIGHT = 64;
+        const STEP_TIMES = [0.8, 1.22, 1.64, 2.06, 2.48, 2.9];
+        const STEP_DUR = 0.45;
+        const FADE_DUR = 0.3;
+        const steps = Array.from(document.querySelectorAll(".f02-intro-step"));
+        const items = Array.from(document.querySelectorAll(".f02-intro-item"));
+
+        steps.forEach((el, i) => {
+          tl.fromTo(
+            el,
+            { y: 0 },
+            { y: -ITEM_HEIGHT, duration: STEP_DUR, ease: "back.out(1.2)" },
+            STEP_TIMES[i],
+          );
+        });
+
+        items.forEach((el, i) => {
+          tl.fromTo(
+            el,
+            { opacity: 0 },
+            { opacity: 1, duration: FADE_DUR, ease: "power1.out" },
+            STEP_TIMES[i],
+          );
+          if (i + 1 < STEP_TIMES.length) {
+            tl.fromTo(
+              el,
+              { opacity: 1 },
+              { opacity: 0, duration: FADE_DUR, ease: "power1.in", immediateRender: false },
+              STEP_TIMES[i + 1],
+            );
+          }
+        });
+
+        tl.fromTo(
+          document.getElementById("f02-intro-item-en"),
+          { color: "rgba(0, 0, 0, 0.6)" },
+          { color: "rgba(0, 0, 0, 1)", duration: 0.3, ease: "power1.out" },
+          2.95,
+        );
+
+        const codes = Array.from(document.querySelectorAll(".f02-intro-code"));
+        const CODE_TIMES = [0, 1.22, 1.64, 2.06, 2.48, 2.9];
+        codes.forEach((el, i) => tl.set(el, { opacity: i === 0 ? 1 : 0 }, 0));
+        for (let i = 1; i < codes.length; i++) {
+          tl.set(codes[i - 1], { opacity: 0 }, CODE_TIMES[i]);
+          tl.set(codes[i], { opacity: 1 }, CODE_TIMES[i]);
+        }
+
+        Array.from(document.getElementById("f02-intro-follow").querySelectorAll('.f02-intro-word')).forEach((el, i) => {
+          tl.fromTo(
+            el,
+            { opacity: 0, y: 18 },
+            { opacity: 1, y: 0, duration: 0.32, ease: "power3.out" },
+            2.98 + i * 0.09,
+          );
+        });
+
+        window.__timelines = window.__timelines || {};
+        window.__timelines["02-intro"] = tl;
+      })();
+    </script>
+  </div>
+</template>

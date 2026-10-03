@@ -23,7 +23,7 @@ music: none
 - duration: 3s
 - poster: 2.6s
 - transition_in: cut
-- status: outline
+- status: animated
 - src: compositions/frames/01-hook.html
 - type: hook
 - persuasion: Pain validation
@@ -49,7 +49,7 @@ Scene 3 (2.4–3.0s): hold the read still — both lines resolved, no drift.
 - duration: 4s
 - poster: 3.4s
 - transition_in: crossfade
-- status: outline
+- status: animated
 - src: compositions/frames/02-intro.html
 - type: product_intro
 - persuasion: Authority by association
@@ -75,7 +75,7 @@ Scene 3 (2.9–4.0s): the cycle lands on English — "Reserved for documentation
 - duration: 3s
 - poster: 2.7s
 - transition_in: blur-crossfade
-- status: outline
+- status: animated
 - src: compositions/frames/03-outro.html
 - type: branding
 - persuasion: Friction reduction
