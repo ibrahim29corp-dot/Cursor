@@ -43,7 +43,8 @@ export const SneakoPromo = ({ layout }: SneakoPromoProps) => {
               <HookScene
                 layout={layout}
                 hook={promoConfig.hook}
-                cutoutSrc={promoConfig.assets.cutout}
+                photos={promoConfig.photos}
+                holdFrames={promoConfig.photoHoldFrames}
                 safeZone={zone}
                 brand={brand}
               />
@@ -56,7 +57,8 @@ export const SneakoPromo = ({ layout }: SneakoPromoProps) => {
                 name={promoConfig.name}
                 role={promoConfig.role}
                 tagline={promoConfig.tagline}
-                cutoutSrc={promoConfig.assets.cutout}
+                photos={promoConfig.photos}
+                holdFrames={promoConfig.photoHoldFrames}
                 safeZone={zone}
                 brand={brand}
               />
@@ -64,7 +66,14 @@ export const SneakoPromo = ({ layout }: SneakoPromoProps) => {
           </Sequence>
           <Sequence from={toFrames(scenes.proof.from, fps)} durationInFrames={proofFrames}>
             <SceneFade durationInFrames={proofFrames} enterFrames={4} exitFrames={4}>
-              <ProofScene layout={layout} stats={promoConfig.stats} safeZone={zone} brand={brand} />
+              <ProofScene
+                layout={layout}
+                stats={promoConfig.stats}
+                photos={promoConfig.photos}
+                holdFrames={promoConfig.photoHoldFrames}
+                safeZone={zone}
+                brand={brand}
+              />
             </SceneFade>
           </Sequence>
           <Sequence from={toFrames(scenes.clips.from, fps)} durationInFrames={clipsFrames} premountFor={12}>
@@ -72,9 +81,10 @@ export const SneakoPromo = ({ layout }: SneakoPromoProps) => {
               <ClipsScene
                 layout={layout}
                 clips={promoConfig.clips}
+                photos={promoConfig.photos}
+                holdFrames={promoConfig.photoHoldFrames}
                 safeZone={zone}
                 brand={brand}
-                durationInFrames={clipsFrames}
               />
             </SceneFade>
           </Sequence>
@@ -86,6 +96,8 @@ export const SneakoPromo = ({ layout }: SneakoPromoProps) => {
                 url={promoConfig.cta.url}
                 button={promoConfig.cta.button}
                 logoSrc={promoConfig.assets.logo}
+                photos={promoConfig.photos}
+                holdFrames={promoConfig.photoHoldFrames}
                 safeZone={zone}
                 brand={brand}
               />

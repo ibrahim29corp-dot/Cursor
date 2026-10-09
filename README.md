@@ -72,14 +72,14 @@ Drop files at these paths, or point `config.assets` / `config.audio` / `config.c
 
 | Slot | Default path |
 | --- | --- |
-| Cutout | `public/images/sneako-cutout.png` |
+| Photos | `public/images/sneako-01.jpg` through `sneako-13.jpg` |
 | Logo | `public/images/kick-logo.svg` |
 | Clips | `public/clips/clip1.mp4`, `clip2.mp4`, `clip3.mp4` |
 | Music | `public/audio/track.mp3` |
 | Whoosh | `public/sfx/whoosh.mp3` |
 | Impact | `public/sfx/impact.mp3` |
 
-The cutout should be a transparent PNG. The file shipped here is a cutout of a CC0 photograph, [Sneako in Malaysia](https://commons.wikimedia.org/wiki/File:Sneako_in_Malaysia.png) (MuhammadRaymen01, Wikimedia Commons, April 2026). Replace it with your own transparent PNG if you want a different shot. Clips are cover-cropped and muted so the soundtrack stays in front. The logo can be SVG or PNG.
+`photos` is the set of stills that flash through the hook, name lockup, stats, clip section, and end card. `photoHoldFrames` is how long each one stays up (3 frames is ten cuts a second). Drop more files in `public/images/` and add their paths to that list. The shipped set is thirteen different photos, including a CC0 shot from [Sneako in Malaysia](https://commons.wikimedia.org/wiki/File:Sneako_in_Malaysia.png). The logo can be SVG or PNG. Clip files are optional; the clip section uses `photos` and reads its captions from `clips`.
 
 If a file is missing, that slot renders as a labeled rectangle and the preview still starts. Audio is skipped when its file is missing, instead of failing the render.
 

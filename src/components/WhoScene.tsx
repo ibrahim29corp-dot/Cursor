@@ -1,9 +1,9 @@
-import { AbsoluteFill, interpolate, spring, useCurrentFrame, useVideoConfig } from "remotion";
+import { AbsoluteFill, spring, useCurrentFrame, useVideoConfig } from "remotion";
 import { anton, bebas } from "../fonts";
 import { withAlpha } from "../lib/color";
-import { fitFontSize, slamSpring } from "../lib/motion";
+import { fitFontSize } from "../lib/motion";
 import type { Brand, Layout, SafeZone } from "../types";
-import { AssetImage } from "./AssetImage";
+import { PhotoFlash } from "./PhotoFlash";
 import { SafeContent } from "./SafeContent";
 import { SlamText } from "./SlamText";
 import { WipeRule } from "./WipeRule";
@@ -13,12 +13,13 @@ export type WhoSceneProps = {
   name: string;
   role: string;
   tagline: string;
-  cutoutSrc: string;
+  photos: readonly string[];
+  holdFrames: number;
   safeZone: SafeZone;
   brand: Brand;
 };
 
-export const WhoScene = ({ layout, name, role, tagline, cutoutSrc, safeZone, brand }: WhoSceneProps) => {
+export const WhoScene = ({ layout, name, role, tagline, photos, holdFrames, safeZone, brand }: WhoSceneProps) => {
   const frame = useCurrentFrame();
   const { fps, width } = useVideoConfig();
   const portrait = layout === "portrait";
@@ -36,31 +37,10 @@ export const WhoScene = ({ layout, name, role, tagline, cutoutSrc, safeZone, bra
     fps,
     config: { damping: 16, stiffness: 240, mass: 0.3, overshootClamping: true },
   });
-  const figure = spring({ frame, fps, config: slamSpring });
-  const figureScale = interpolate(figure, [0, 1], [1.18, 1]);
 
   return (
     <AbsoluteFill>
-      <AbsoluteFill style={{ overflow: "hidden" }}>
-        <div
-          style={{
-            position: "absolute",
-            top: portrait ? 90 : "-6%",
-            left: portrait ? "8%" : "-2%",
-            width: portrait ? "84%" : "50%",
-            height: portrait ? "70%" : "116%",
-            transform: `scale(${figureScale})`,
-            transformOrigin: portrait ? "50% 22%" : "32% 40%",
-          }}
-        >
-          <AssetImage
-            src={cutoutSrc}
-            fallbackLabel="CUTOUT"
-            accent={brand.accent}
-            text={brand.text}
-          />
-        </div>
-      </AbsoluteFill>
+      <PhotoFlash photos={photos} holdFrames={holdFrames} offset={4} />
       <AbsoluteFill
         style={{
           background: portrait

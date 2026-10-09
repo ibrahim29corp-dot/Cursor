@@ -60,9 +60,9 @@ export const promoConfig = {
     button: "FOLLOW",
   },
   stats: [
-    { label: "PEAK VIEWERS", value: null, placeholder: "[PEAK VIEWERS]" },
-    { label: "FOLLOWERS", value: null, placeholder: "[FOLLOWERS]" },
-    { label: "HOURS STREAMED", value: null, placeholder: "[HOURS STREAMED]" },
+    { label: "AVG LIVE VIEWERS", value: 5, suffix: "K", placeholder: "5K" },
+    { label: "FOLLOWERS", value: 140, suffix: "K", placeholder: "140K" },
+    { label: "DAILY STREAMS", value: 5, suffix: " HRS", placeholder: "5 HRS" },
   ] satisfies Stat[],
   clips: [
     { src: "clips/clip1.mp4", caption: "UNSCRIPTED" },
@@ -80,6 +80,26 @@ export const promoConfig = {
     10.1, 10.43, 10.77, 11.1, 11.43, 11.77, 12, 12.43, 12.77, 13.1, 13.43, 13.77, 14.1,
     14.43, 14.77, 15.1, 15.43, 15.77, 16.1, 16.43, 16.77, 17, 17.43, 17.77, 18.1, 18.43,
     18.77, 19.1, 19.55,
+  ],
+  /**
+   * How many frames each photo stays on screen. 3 is ten cuts a second.
+   * Raise it if a new set of photos should breathe longer.
+   */
+  photoHoldFrames: 3,
+  photos: [
+    "images/sneako-01.jpg",
+    "images/sneako-02.jpg",
+    "images/sneako-03.jpg",
+    "images/sneako-04.jpg",
+    "images/sneako-05.jpg",
+    "images/sneako-06.jpg",
+    "images/sneako-07.jpg",
+    "images/sneako-08.jpg",
+    "images/sneako-09.jpg",
+    "images/sneako-10.jpg",
+    "images/sneako-11.jpg",
+    "images/sneako-12.jpg",
+    "images/sneako-13.jpg",
   ],
   assets: {
     cutout: "images/sneako-cutout.png",

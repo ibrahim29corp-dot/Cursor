@@ -4,6 +4,7 @@ import { withAlpha } from "../lib/color";
 import { fitFontSize, slamSpring } from "../lib/motion";
 import type { Brand, Layout, SafeZone } from "../types";
 import { AssetImage } from "./AssetImage";
+import { PhotoFlash } from "./PhotoFlash";
 import { SafeContent } from "./SafeContent";
 import { SlamText } from "./SlamText";
 import { useEnergy } from "./energy";
@@ -14,6 +15,8 @@ export type CtaSceneProps = {
   url: string;
   button: string;
   logoSrc: string;
+  photos: readonly string[];
+  holdFrames: number;
   safeZone: SafeZone;
   brand: Brand;
 };
@@ -51,6 +54,8 @@ export const CtaScene = ({
   url,
   button,
   logoSrc,
+  photos,
+  holdFrames,
   safeZone,
   brand,
 }: CtaSceneProps) => {
@@ -82,6 +87,8 @@ export const CtaScene = ({
 
   return (
     <AbsoluteFill>
+      <PhotoFlash photos={photos} holdFrames={holdFrames} offset={6} />
+      <AbsoluteFill style={{ background: withAlpha(brand.background, 0.72) }} />
       <AbsoluteFill style={{ alignItems: "center", justifyContent: "center" }}>
         <div
           style={{
