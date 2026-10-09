@@ -10,13 +10,13 @@ import type { Brand, Clip, Layout, SafeZone, SceneWindow, Stat } from "./types";
  * placeholder renders instead. Do not drop in estimated counts.
  */
 
-const hookSeconds = 2;
+const hookSeconds = 1.5;
 const proofSeconds = 2;
-const ctaSeconds = 2.5;
+const ctaSeconds = 3;
 
 export const promoConfig = {
   fps: 30,
-  /** Open 2s, stats 2s, end card 2.5s. 6.5 seconds total. */
+  /** Open 1.5s, stats 2s, end card 3s. 6.5 seconds total. */
   durationInSeconds: hookSeconds + proofSeconds + ctaSeconds,
   compositions: {
     portrait: {
@@ -89,7 +89,7 @@ export const promoConfig = {
    * Raise it if a new set of photos should breathe longer.
    */
   photoHoldFrames: 3,
-  /** Held still behind the stat cards for the whole second beat (2s–4s). Cuts resume at 4s. */
+  /** Held still behind the stat cards for the whole second beat (1.5s–3.5s). Cuts resume at 3.5s. */
   proofPhoto: "images/sneako-02.jpg",
   photos: [
     "images/sneako-01.jpg",
