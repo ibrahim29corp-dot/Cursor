@@ -67,14 +67,14 @@ export const ClipsScene = ({
             transform: `translateY(${captionY}px)`,
             background: withAlpha(brand.background, 0.82),
             borderLeft: `8px solid ${brand.accent}`,
-            padding: portrait ? "16px 28px" : "12px 22px",
+            padding: portrait ? "22px 36px" : "16px 28px",
             boxShadow: `0 0 24px ${withAlpha(brand.accent, 0.28)}`,
           }}
         >
           <div
             style={{
               fontFamily: anton,
-              fontSize: portrait ? 58 : 42,
+              fontSize: portrait ? 92 : 70,
               color: brand.text,
               letterSpacing: 1,
               lineHeight: 0.9,

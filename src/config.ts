@@ -44,11 +44,11 @@ export const promoConfig = {
     landscape: { top: 72, right: 88, bottom: 88, left: 88 },
   } satisfies Record<Layout, SafeZone>,
   scenes: {
-    hook: { from: 0, duration: 2 + overlapSeconds },
-    who: { from: 2, duration: 4 },
-    proof: { from: 6, duration: 5 + overlapSeconds },
-    clips: { from: 11, duration: 6 + overlapSeconds },
-    cta: { from: 17, duration: 3 },
+    hook: { from: 0, duration: 4 + overlapSeconds },
+    who: { from: 4, duration: 4 },
+    proof: { from: 8, duration: 4 + overlapSeconds },
+    clips: { from: 12, duration: 4 + overlapSeconds },
+    cta: { from: 16, duration: 4 },
   } satisfies Record<"hook" | "who" | "proof" | "clips" | "cta", SceneWindow>,
   hook: "THE STREAM\nEVERYONE'S\nTALKING ABOUT",
   name: "SNEAKO",
@@ -86,7 +86,7 @@ export const promoConfig = {
    * Raise it if a new set of photos should breathe longer.
    */
   photoHoldFrames: 3,
-  /** Held still behind the stat cards from 6s to 11s. Cuts resume after that. */
+  /** Held still behind the stat cards from 8s to 12s. Cuts resume after that. */
   proofPhoto: "images/sneako-02.jpg",
   photos: [
     "images/sneako-01.jpg",

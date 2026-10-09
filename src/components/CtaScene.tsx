@@ -66,8 +66,8 @@ export const CtaScene = ({
   const available = width - safeZone.left - safeZone.right;
   const logoSize = portrait ? 188 : 210;
   const textWidth = portrait ? available : available - logoSize - 72;
-  const headlineSize = fitFontSize(headline, textWidth, portrait ? 104 : 86);
-  const urlSize = fitFontSize(url, textWidth, portrait ? 58 : 46, 0.58);
+  const headlineSize = fitFontSize(headline, textWidth, portrait ? 148 : 118);
+  const urlSize = fitFontSize(url, textWidth, portrait ? 84 : 66, 0.58);
   const logoIn = spring({ frame, fps, config: slamSpring });
   const logoScale = interpolate(logoIn, [0, 1], [0.55, 1]);
   const logoTilt = interpolate(logoIn, [0, 1], [-10, 0]);
@@ -166,7 +166,7 @@ export const CtaScene = ({
                   justifyContent: "center",
                   position: "relative",
                   minWidth: portrait ? "100%" : 420,
-                  padding: portrait ? "26px 36px" : "22px 42px",
+                  padding: portrait ? "34px 42px" : "28px 48px",
                   borderRadius: 999,
                   background: brand.accent,
                   color: brand.background,
@@ -177,7 +177,7 @@ export const CtaScene = ({
                 <span
                   style={{
                     fontFamily: anton,
-                    fontSize: portrait ? 54 : 44,
+                    fontSize: portrait ? 78 : 62,
                     letterSpacing: 1.5,
                     lineHeight: 0.9,
                   }}
