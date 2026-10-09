@@ -1,6 +1,6 @@
 # Sneako on Kick
 
-A 9-second Remotion promo, 1080×1920 at 30fps, built to send people to [kick.com/sneako](https://kick.com/sneako). The same scenes also render as 1920×1080.
+A 6.5-second Remotion promo, 1080×1920 at 30fps, built to send people to [kick.com/sneako](https://kick.com/sneako). The same scenes also render as 1920×1080.
 
 Copy, stats, colors, timing, beat hits, and file paths all live in [`src/config.ts`](src/config.ts). Swap those values instead of editing scene components.
 
@@ -48,7 +48,7 @@ Open `src/config.ts`.
 | `scenes` | Start time and length, in seconds. |
 | `beatTimes` | Seconds where the frame shakes and the type glitches. |
 
-The promo is three segments of exactly 3 seconds: 9 seconds total. The open runs 0–3s. At 3 seconds the photos lock on `proofPhoto` and the stat cards hold until 6 seconds. At 6 seconds the end card takes over and the photo cuts resume until the video ends at 9 seconds. The scenes do not overlap.
+The promo is three segments: the open is 2 seconds, the stat cards are 2 seconds, and the end card is 2.5 seconds. Total runtime is 6.5 seconds. Photos cut through the open. At 2 seconds they lock on `proofPhoto` until the stat cards leave at 4 seconds. The end card then runs until 6.5 seconds, with the photo cuts behind it. The scenes do not overlap.
 
 Every line above is drawn on screen, so the promo still reads with the sound off. Clip scenes also get a caption bar.
 
@@ -85,7 +85,7 @@ If a file is missing, that slot renders as a labeled rectangle and the preview s
 
 The included track, whooshes, and impacts are synthesized placeholders, not a commercial song. Replace `track.mp3` with a track you have rights to, then set `beatTimes` to that track's downbeats so the shakes land on the music. The shipped track was generated from the `beatTimes` already in config.
 
-Whoosh and impact files play at each scene change (0s, 3s, 6s).
+Whoosh and impact files play at each scene change (0s, 2s, 4s).
 
 ## Safe zones
 
@@ -98,9 +98,9 @@ Set `debug.showSafeZone` to `true` to draw the box while you check a layout, the
 ```
 src/config.ts                 copy, stats, paths, timing, beats
 src/SneakoPromo.tsx           timeline shared by both aspect ratios
-src/components/HookScene.tsx  0–3s name, hook, photo cuts
-src/components/ProofScene.tsx 3–6s stat cards on one still photo
-src/components/CtaScene.tsx   6–9s end card, captions, photo cuts
+src/components/HookScene.tsx  0–2s name, hook, photo cuts
+src/components/ProofScene.tsx 2–4s stat cards on one still photo
+src/components/CtaScene.tsx   4–6.5s end card, captions, photo cuts
 src/components/StatCard.tsx   one proof card
 src/components/SlamText.tsx   kinetic type
 ```

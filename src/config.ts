@@ -10,12 +10,14 @@ import type { Brand, Clip, Layout, SafeZone, SceneWindow, Stat } from "./types";
  * placeholder renders instead. Do not drop in estimated counts.
  */
 
-const segmentSeconds = 3;
+const hookSeconds = 2;
+const proofSeconds = 2;
+const ctaSeconds = 2.5;
 
 export const promoConfig = {
   fps: 30,
-  /** Three beats of 3 seconds: open, stats, end card. 9 seconds total. */
-  durationInSeconds: segmentSeconds * 3,
+  /** Open 2s, stats 2s, end card 2.5s. 6.5 seconds total. */
+  durationInSeconds: hookSeconds + proofSeconds + ctaSeconds,
   compositions: {
     portrait: {
       id: "SneakoPromo9x16",
@@ -45,11 +47,11 @@ export const promoConfig = {
     landscape: { top: 72, right: 88, bottom: 88, left: 88 },
   } satisfies Record<Layout, SafeZone>,
   scenes: {
-    hook: { from: 0, duration: segmentSeconds },
+    hook: { from: 0, duration: hookSeconds },
     who: { from: 0, duration: 0 },
-    proof: { from: segmentSeconds, duration: segmentSeconds },
-    clips: { from: segmentSeconds * 2, duration: 0 },
-    cta: { from: segmentSeconds * 2, duration: segmentSeconds },
+    proof: { from: hookSeconds, duration: proofSeconds },
+    clips: { from: hookSeconds + proofSeconds, duration: 0 },
+    cta: { from: hookSeconds + proofSeconds, duration: ctaSeconds },
   } satisfies Record<"hook" | "who" | "proof" | "clips" | "cta", SceneWindow>,
   hook: "THE STREAM\nEVERYONE'S\nTALKING ABOUT",
   name: "SNEAKO",
@@ -87,7 +89,7 @@ export const promoConfig = {
    * Raise it if a new set of photos should breathe longer.
    */
   photoHoldFrames: 3,
-  /** Held still behind the stat cards for the whole second beat (3s–6s). Cuts resume at 6s. */
+  /** Held still behind the stat cards for the whole second beat (2s–4s). Cuts resume at 4s. */
   proofPhoto: "images/sneako-02.jpg",
   photos: [
     "images/sneako-01.jpg",
