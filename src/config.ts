@@ -45,9 +45,9 @@ export const promoConfig = {
   } satisfies Record<Layout, SafeZone>,
   scenes: {
     hook: { from: 0, duration: 2 + overlapSeconds },
-    who: { from: 2, duration: 4 + overlapSeconds },
-    proof: { from: 6, duration: 6 + overlapSeconds },
-    clips: { from: 12, duration: 5 + overlapSeconds },
+    who: { from: 2, duration: 4 },
+    proof: { from: 6, duration: 5 + overlapSeconds },
+    clips: { from: 11, duration: 6 + overlapSeconds },
     cta: { from: 17, duration: 3 },
   } satisfies Record<"hook" | "who" | "proof" | "clips" | "cta", SceneWindow>,
   hook: "THE STREAM\nEVERYONE'S\nTALKING ABOUT",
@@ -86,6 +86,8 @@ export const promoConfig = {
    * Raise it if a new set of photos should breathe longer.
    */
   photoHoldFrames: 3,
+  /** Held still behind the stat cards from 6s to 11s. Cuts resume after that. */
+  proofPhoto: "images/sneako-02.jpg",
   photos: [
     "images/sneako-01.jpg",
     "images/sneako-02.jpg",

@@ -48,7 +48,7 @@ Open `src/config.ts`.
 | `scenes` | Start time and length, in seconds. |
 | `beatTimes` | Seconds where the frame shakes and the type glitches. |
 
-Scene `duration` values include a 0.14s overlap into the next scene so the change is a crossfade, not a cut. The last scene ends at 20 seconds. If you move a start time, keep that overlap and keep the timeline inside 20 seconds.
+Scene `duration` values include a 0.14s overlap into the next scene so the change is a crossfade, not a cut. The name lockup ends at 6 seconds without that overlap, so the stat cards can lock onto `proofPhoto` until 11 seconds. Photo cuts resume when those cards leave. The last scene ends at 20 seconds. If you move a start time, keep the timeline inside 20 seconds.
 
 Every line above is drawn on screen, so the promo still reads with the sound off. Clip scenes also get a caption bar.
 
@@ -100,8 +100,8 @@ src/config.ts                 copy, stats, paths, timing, beats
 src/SneakoPromo.tsx           timeline shared by both aspect ratios
 src/components/HookScene.tsx  0–2s cutout + hook
 src/components/WhoScene.tsx   2–6s name lockup
-src/components/ProofScene.tsx 6–12s stat cards
-src/components/ClipsScene.tsx 12–17s clip grid and punches
+src/components/ProofScene.tsx 6–11s stat cards on one still photo
+src/components/ClipsScene.tsx 11–17s photo cuts and captions
 src/components/CtaScene.tsx   17–20s end card
 src/components/StatCard.tsx   one proof card
 src/components/SlamText.tsx   kinetic type

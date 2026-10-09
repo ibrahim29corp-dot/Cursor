@@ -51,7 +51,7 @@ export const SneakoPromo = ({ layout }: SneakoPromoProps) => {
             </SceneFade>
           </Sequence>
           <Sequence from={toFrames(scenes.who.from, fps)} durationInFrames={whoFrames}>
-            <SceneFade durationInFrames={whoFrames} enterFrames={4} exitFrames={4}>
+            <SceneFade durationInFrames={whoFrames} enterFrames={4} exitFrames={0}>
               <WhoScene
                 layout={layout}
                 name={promoConfig.name}
@@ -65,12 +65,11 @@ export const SneakoPromo = ({ layout }: SneakoPromoProps) => {
             </SceneFade>
           </Sequence>
           <Sequence from={toFrames(scenes.proof.from, fps)} durationInFrames={proofFrames}>
-            <SceneFade durationInFrames={proofFrames} enterFrames={4} exitFrames={4}>
+            <SceneFade durationInFrames={proofFrames} enterFrames={0} exitFrames={4}>
               <ProofScene
                 layout={layout}
                 stats={promoConfig.stats}
-                photos={promoConfig.photos}
-                holdFrames={promoConfig.photoHoldFrames}
+                stillSrc={promoConfig.proofPhoto}
                 safeZone={zone}
                 brand={brand}
               />
