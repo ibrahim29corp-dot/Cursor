@@ -1,0 +1,44 @@
+---
+description: How to make short epic Remotion edits for any subject
+alwaysApply: true
+---
+
+# Epic edit studio
+
+This repo is a Remotion + TypeScript studio for short promo edits. The shipped Sneako piece is one edit. A new request is a new edit for whoever the brief names. Do not assume the subject is Sneako, and do not assume the picture is a zooming photo slideshow.
+
+## Brief
+
+Take the subject, the single call to action, each beat's length in seconds, the aspect ratios, the colors, and any proof numbers from the user. Leave a stat as `value: null` until they give a real figure. Never invent counts, rankings, or quotes.
+
+If they name beat lengths, those lengths are exact. Add them up for `durationInSeconds`. At 30fps the frame count is that total times 30. Scenes do not overlap unless they ask for a crossfade.
+
+## Picture
+
+Pick the treatment from the brief. Use one primary look:
+
+- Kinetic type on the brand background, with accent glow and beat hits.
+- Hard photo cuts. Each still holds for a few frames. A small scale punch is enough. Do not hold one photo and slowly zoom it for the whole edit.
+- One locked still behind a card, then motion again after the card leaves.
+- Real footage, muted, with burned-in captions.
+- Graphic shapes and type only, when there are no photos.
+
+Photos must be real photographs of that person, or assets the user supplied. Do not generate a face.
+
+## Motion and layout
+
+Animate with `spring()` and `interpolate()`. Brand background, accent, and white type come from config. Portrait type stays out of the top 250px and the bottom 400px. Ship 1080×1920 and 1920×1080 from the same timeline.
+
+## New edit vs the Sneako promo
+
+Keep the Sneako compositions unless the user says to replace them. A different subject gets its own config object and composition ids, its own `out/<slug>-9x16.mp4`, and its own landscape file.
+
+Everything the viewer reads (lines, colors, timing, asset paths) lives in config. Scenes take those values as props.
+
+## Prove the cut
+
+Chrome is `/usr/local/bin/google-chrome`. If `node_modules` is missing, run `npm ci` from the repo root.
+
+Render, then check the video stream with ffprobe: width, height, frame count, and duration. Frame count must equal `durationInSeconds * 30`. Grab a still from inside each beat and one frame before each cut. The type for that beat must be on screen, and the next beat must not have started yet.
+
+Update the draft PR with the new mp4. Do not commit `out/`.
