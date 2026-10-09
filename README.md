@@ -48,7 +48,7 @@ Open `src/config.ts`.
 | `scenes` | Start time and length, in seconds. |
 | `beatTimes` | Seconds where the frame shakes and the type glitches. |
 
-Scene `duration` values include a 0.28s overlap into the next scene so the change is a crossfade, not a cut. The last scene ends at 20 seconds. If you move a start time, keep that overlap and keep the timeline inside 20 seconds.
+Scene `duration` values include a 0.14s overlap into the next scene so the change is a crossfade, not a cut. The last scene ends at 20 seconds. If you move a start time, keep that overlap and keep the timeline inside 20 seconds.
 
 Every line above is drawn on screen, so the promo still reads with the sound off. Clip scenes also get a caption bar.
 
@@ -79,7 +79,7 @@ Drop files at these paths, or point `config.assets` / `config.audio` / `config.c
 | Whoosh | `public/sfx/whoosh.mp3` |
 | Impact | `public/sfx/impact.mp3` |
 
-The cutout should be a transparent PNG. Clips are cover-cropped and muted so the soundtrack stays in front. The logo can be SVG or PNG.
+The cutout should be a transparent PNG. The file shipped here is a cutout of a CC0 photograph, [Sneako in Malaysia](https://commons.wikimedia.org/wiki/File:Sneako_in_Malaysia.png) (MuhammadRaymen01, Wikimedia Commons, April 2026). Replace it with your own transparent PNG if you want a different shot. Clips are cover-cropped and muted so the soundtrack stays in front. The logo can be SVG or PNG.
 
 If a file is missing, that slot renders as a labeled rectangle and the preview still starts. Audio is skipped when its file is missing, instead of failing the render.
 

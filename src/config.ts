@@ -10,7 +10,7 @@ import type { Brand, Clip, Layout, SafeZone, SceneWindow, Stat } from "./types";
  * placeholder renders instead. Do not drop in estimated counts.
  */
 
-const overlapSeconds = 0.28;
+const overlapSeconds = 0.14;
 
 export const promoConfig = {
   fps: 30,
@@ -75,8 +75,11 @@ export const promoConfig = {
    * replace this list with that song's downbeats.
    */
   beatTimes: [
-    0.22, 0.9, 1.55, 2, 2.7, 3.45, 4.2, 5.05, 6, 6.7, 7.45, 8.2, 8.95, 9.7, 10.45,
-    11.2, 12, 12.65, 13.4, 14.15, 14.9, 15.65, 17, 17.7, 18.45, 19.45,
+    0.1, 0.43, 0.77, 1.1, 1.43, 1.77, 2, 2.43, 2.77, 3.1, 3.43, 3.77, 4.1, 4.43, 4.77,
+    5.1, 5.43, 5.77, 6, 6.43, 6.77, 7.1, 7.43, 7.77, 8.1, 8.43, 8.77, 9.1, 9.43, 9.77,
+    10.1, 10.43, 10.77, 11.1, 11.43, 11.77, 12, 12.43, 12.77, 13.1, 13.43, 13.77, 14.1,
+    14.43, 14.77, 15.1, 15.43, 15.77, 16.1, 16.43, 16.77, 17, 17.43, 17.77, 18.1, 18.43,
+    18.77, 19.1, 19.55,
   ],
   assets: {
     cutout: "images/sneako-cutout.png",

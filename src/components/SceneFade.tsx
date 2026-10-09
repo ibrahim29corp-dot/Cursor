@@ -11,8 +11,8 @@ type SceneFadeProps = {
 /** Crossfades a scene in and out so timeline changes are never hard cuts. */
 export const SceneFade = ({
   durationInFrames,
-  enterFrames = 8,
-  exitFrames = 8,
+  enterFrames = 4,
+  exitFrames = 4,
   children,
 }: SceneFadeProps) => {
   const frame = useCurrentFrame();

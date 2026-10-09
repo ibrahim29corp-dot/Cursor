@@ -57,7 +57,7 @@ export const SlamText = ({
             }}
           >
             {tokens.map((token, tokenIndex) => {
-              const order = lineIndex * 4 + tokenIndex;
+              const order = lineIndex * 2 + tokenIndex;
               const enter = spring({
                 frame: frame - delay - order * stagger,
                 fps,

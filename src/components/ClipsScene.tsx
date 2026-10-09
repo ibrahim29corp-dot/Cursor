@@ -34,9 +34,9 @@ export const ClipsScene = ({ layout, clips, safeZone, brand, durationInFrames }:
   const gridH = height - safeZone.top - safeZone.bottom;
   const cellW = (gridW - gap * (cols - 1)) / cols;
   const cellH = (gridH - gap * (rows - 1)) / rows;
-  const intro = Math.min(Math.round(fps * 0.42), Math.max(8, Math.round(durationInFrames * 0.14)));
+  const intro = Math.min(Math.round(fps * 0.16), Math.max(4, Math.round(durationInFrames * 0.06)));
   const slice = Math.max(1, durationInFrames - intro) / clips.length;
-  const handoff = Math.round(fps * 0.22);
+  const handoff = Math.round(fps * 0.12);
 
   const cellFor = (index: number) => {
     const col = portrait ? 0 : index;
@@ -61,7 +61,7 @@ export const ClipsScene = ({ layout, clips, safeZone, brand, durationInFrames }:
     const enter = spring({
       frame: frame - start,
       fps,
-      config: { damping: 13, stiffness: 180, mass: 0.46 },
+      config: { damping: 14, stiffness: 340, mass: 0.28, overshootClamping: true },
     });
     if (index === clips.length - 1) {
       return enter;
@@ -97,13 +97,15 @@ export const ClipsScene = ({ layout, clips, safeZone, brand, durationInFrames }:
         const y = interpolate(weight, [0, 1], [cell.y, 0]);
         const w = interpolate(weight, [0, 1], [cell.w, width]);
         const h = interpolate(weight, [0, 1], [cell.h, height]);
+        const local = Math.max(0, frame - startFor(index));
         const punch = spring({
-          frame: frame - startFor(index),
+          frame: local,
           fps,
-          config: { damping: 10, stiffness: 170, mass: 0.42 },
+          config: { damping: 12, stiffness: 360, mass: 0.26, overshootClamping: true },
         });
-        const punched = interpolate(punch, [0, 1], [1.18, 1]);
-        const scale = interpolate(weight, [0, 1], [1.03, punched]);
+        const pulse = interpolate(Math.sin((local / fps) * Math.PI * 6), [-1, 1], [1, 1.07]);
+        const punched = interpolate(punch, [0, 1], [1.34, 1]) * pulse;
+        const scale = interpolate(weight, [0, 1], [1.04, punched]);
         const wipe = interpolate(weight, [0, 0.7], [20, 0], {
           extrapolateLeft: "clamp",
           extrapolateRight: "clamp",

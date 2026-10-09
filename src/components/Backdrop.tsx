@@ -15,8 +15,8 @@ export const Backdrop = ({ brand }: BackdropProps) => {
     extrapolateLeft: "clamp",
     extrapolateRight: "clamp",
   });
-  const stripe = interpolate(frame % 120, [0, 120], [0, -48]);
-  const scan = interpolate(frame % 80, [0, 80], [-8, 108]);
+  const stripe = interpolate(frame % 48, [0, 48], [0, -48]);
+  const scan = interpolate(frame % 32, [0, 32], [-8, 108]);
   const glow = interpolate(energy, [0, 1], [0.2, 0.48]);
 
   return (

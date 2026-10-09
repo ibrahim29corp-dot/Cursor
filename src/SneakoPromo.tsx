@@ -36,10 +36,10 @@ export const SneakoPromo = ({ layout }: SneakoPromoProps) => {
   return (
     <EnergyContext.Provider value={hit}>
       <AbsoluteFill style={{ background: brand.background, overflow: "hidden" }}>
-        <AbsoluteFill style={{ transform: `translate(${hit * 8 * xDir}px, ${hit * 5 * yDir}px)` }}>
+        <AbsoluteFill style={{ transform: `translate(${hit * 5 * xDir}px, ${hit * 3 * yDir}px)` }}>
           <Backdrop brand={brand} />
           <Sequence from={toFrames(scenes.hook.from, fps)} durationInFrames={hookFrames}>
-            <SceneFade durationInFrames={hookFrames} enterFrames={0} exitFrames={8}>
+            <SceneFade durationInFrames={hookFrames} enterFrames={0} exitFrames={4}>
               <HookScene
                 layout={layout}
                 hook={promoConfig.hook}
@@ -50,24 +50,25 @@ export const SneakoPromo = ({ layout }: SneakoPromoProps) => {
             </SceneFade>
           </Sequence>
           <Sequence from={toFrames(scenes.who.from, fps)} durationInFrames={whoFrames}>
-            <SceneFade durationInFrames={whoFrames} enterFrames={8} exitFrames={8}>
+            <SceneFade durationInFrames={whoFrames} enterFrames={4} exitFrames={4}>
               <WhoScene
                 layout={layout}
                 name={promoConfig.name}
                 role={promoConfig.role}
                 tagline={promoConfig.tagline}
+                cutoutSrc={promoConfig.assets.cutout}
                 safeZone={zone}
                 brand={brand}
               />
             </SceneFade>
           </Sequence>
           <Sequence from={toFrames(scenes.proof.from, fps)} durationInFrames={proofFrames}>
-            <SceneFade durationInFrames={proofFrames} enterFrames={8} exitFrames={8}>
+            <SceneFade durationInFrames={proofFrames} enterFrames={4} exitFrames={4}>
               <ProofScene layout={layout} stats={promoConfig.stats} safeZone={zone} brand={brand} />
             </SceneFade>
           </Sequence>
           <Sequence from={toFrames(scenes.clips.from, fps)} durationInFrames={clipsFrames} premountFor={12}>
-            <SceneFade durationInFrames={clipsFrames} enterFrames={8} exitFrames={8}>
+            <SceneFade durationInFrames={clipsFrames} enterFrames={4} exitFrames={4}>
               <ClipsScene
                 layout={layout}
                 clips={promoConfig.clips}
@@ -78,7 +79,7 @@ export const SneakoPromo = ({ layout }: SneakoPromoProps) => {
             </SceneFade>
           </Sequence>
           <Sequence from={toFrames(scenes.cta.from, fps)} durationInFrames={ctaFrames}>
-            <SceneFade durationInFrames={ctaFrames} enterFrames={8} exitFrames={0}>
+            <SceneFade durationInFrames={ctaFrames} enterFrames={4} exitFrames={0}>
               <CtaScene
                 layout={layout}
                 headline={promoConfig.cta.headline}
@@ -101,7 +102,7 @@ export const SneakoPromo = ({ layout }: SneakoPromoProps) => {
         <AbsoluteFill
           style={{
             background: brand.accent,
-            opacity: hit * 0.14,
+            opacity: hit * 0.1,
             mixBlendMode: "screen",
             pointerEvents: "none",
           }}

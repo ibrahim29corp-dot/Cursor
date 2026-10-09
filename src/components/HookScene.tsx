@@ -23,12 +23,12 @@ export const HookScene = ({ layout, hook, cutoutSrc, safeZone, brand }: HookScen
   const energy = useEnergy();
   const portrait = layout === "portrait";
   const zoom = spring({ frame, fps, config: settleSpring });
-  const scale = interpolate(zoom, [0, 1], [1.58, 1]);
-  const rotate = interpolate(zoom, [0, 1], [portrait ? -4 : -2.5, 0]);
+  const scale = interpolate(zoom, [0, 1], [1.85, 1]);
+  const rotate = interpolate(zoom, [0, 1], [portrait ? -3 : -2, 0]);
   const ring = spring({
     frame,
     fps,
-    config: { damping: 14, stiffness: 70, mass: 0.75 },
+    config: { damping: 16, stiffness: 220, mass: 0.32, overshootClamping: true },
   });
   const ringScale = interpolate(ring, [0, 1], [0.7, 1.4]);
   const ringOpacity = interpolate(ring, [0, 1], [0.65, 0]);
@@ -42,14 +42,14 @@ export const HookScene = ({ layout, hook, cutoutSrc, safeZone, brand }: HookScen
         <div
           style={{
             position: "absolute",
-            top: portrait ? 10 : -30,
+            top: portrait ? 150 : -30,
             left: portrait ? "50%" : "-2%",
-            width: portrait ? width * 0.94 : width * 0.62,
-            height: portrait ? height * 0.8 : height * 1.12,
+            width: portrait ? width * 0.92 : width * 0.58,
+            height: portrait ? height * 0.7 : height * 1.12,
             transform: portrait
               ? `translateX(-50%) scale(${scale}) rotate(${rotate}deg)`
               : `scale(${scale}) rotate(${rotate}deg)`,
-            transformOrigin: portrait ? "50% 40%" : "28% 55%",
+            transformOrigin: portrait ? "50% 30%" : "30% 42%",
           }}
         >
           <div
@@ -84,8 +84,8 @@ export const HookScene = ({ layout, hook, cutoutSrc, safeZone, brand }: HookScen
       <AbsoluteFill
         style={{
           background: portrait
-            ? `linear-gradient(to top, ${brand.background} 0%, ${withAlpha(brand.background, 0.94)} 16%, ${withAlpha(brand.background, 0.62)} 32%, ${withAlpha(brand.background, 0)} 52%)`
-            : `linear-gradient(to right, ${withAlpha(brand.background, 0)} 0%, ${withAlpha(brand.background, 0.15)} 30%, ${withAlpha(brand.background, 0.9)} 56%, ${brand.background} 100%)`,
+            ? `linear-gradient(to top, ${brand.background} 0%, ${brand.background} 18%, ${withAlpha(brand.background, 0.92)} 30%, ${withAlpha(brand.background, 0.4)} 46%, ${withAlpha(brand.background, 0)} 62%)`
+            : `linear-gradient(to right, ${withAlpha(brand.background, 0.15)} 0%, ${withAlpha(brand.background, 0.2)} 28%, ${withAlpha(brand.background, 0.94)} 52%, ${brand.background} 100%)`,
         }}
       />
       <SafeContent
@@ -101,7 +101,7 @@ export const HookScene = ({ layout, hook, cutoutSrc, safeZone, brand }: HookScen
             fontSize={fontSize}
             color={brand.text}
             accent={brand.accent}
-            delay={1}
+            delay={0}
             stagger={1}
             align="left"
             origin="bottom"

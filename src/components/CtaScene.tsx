@@ -27,7 +27,7 @@ const PulseRing = ({
   offset: number;
   accent: string;
 }) => {
-  const progress = ((frame + offset) % 48) / 48;
+  const progress = ((frame + offset) % 24) / 24;
   const scale = interpolate(progress, [0, 1], [0.94, 1.42]);
   const opacity = interpolate(progress, [0, 0.18, 1], [0, 0.55, 0]);
   return (
@@ -67,7 +67,7 @@ export const CtaScene = ({
   const logoScale = interpolate(logoIn, [0, 1], [0.55, 1]);
   const logoTilt = interpolate(logoIn, [0, 1], [-10, 0]);
   const buttonIn = spring({
-    frame: frame - 12,
+    frame: frame - 4,
     fps,
     config: slamSpring,
   });
@@ -76,8 +76,8 @@ export const CtaScene = ({
     extrapolateLeft: "clamp",
     extrapolateRight: "clamp",
   });
-  const pulse = interpolate(Math.sin((frame / fps) * Math.PI * 2.2), [-1, 1], [1, 1.06]);
-  const glow = interpolate(Math.sin((frame / fps) * Math.PI * 2.2), [-1, 1], [18, 46]);
+  const pulse = interpolate(Math.sin((frame / fps) * Math.PI * 4.2), [-1, 1], [1, 1.08]);
+  const glow = interpolate(Math.sin((frame / fps) * Math.PI * 4.2), [-1, 1], [16, 52]);
   const buttonScale = buttonInScale * pulse * (1 + energy * 0.07);
 
   return (
@@ -125,8 +125,8 @@ export const CtaScene = ({
               color={brand.text}
               accent={brand.accent}
               align={portrait ? "center" : "left"}
-              delay={3}
-              stagger={2}
+              delay={0}
+              stagger={1}
               origin="center"
               lineHeight={0.88}
             />
@@ -138,7 +138,7 @@ export const CtaScene = ({
               color={brand.accent}
               accent={brand.accent}
               align={portrait ? "center" : "left"}
-              delay={8}
+              delay={3}
               uppercase={false}
               letterSpacing={0.5}
             />
@@ -151,7 +151,7 @@ export const CtaScene = ({
               }}
             >
               <PulseRing frame={frame} offset={0} accent={brand.accent} />
-              <PulseRing frame={frame} offset={24} accent={brand.accent} />
+              <PulseRing frame={frame} offset={12} accent={brand.accent} />
               <div
                 style={{
                   display: "flex",

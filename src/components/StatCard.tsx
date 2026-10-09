@@ -18,7 +18,7 @@ export const StatCard = ({ stat, index, accent, text, muted, card }: StatCardPro
   const { fps, width, height } = useVideoConfig();
   const portrait = height > width;
   const enter = spring({
-    frame: frame - index * 5,
+    frame: frame - index * 2,
     fps,
     config: slamSpring,
   });
@@ -27,8 +27,8 @@ export const StatCard = ({ stat, index, accent, text, muted, card }: StatCardPro
     extrapolateLeft: "clamp",
     extrapolateRight: "clamp",
   });
-  const countStart = 10 + index * 6;
-  const progress = interpolate(frame, [countStart, countStart + 40], [0, 1], {
+  const countStart = 3 + index * 2;
+  const progress = interpolate(frame, [countStart, countStart + 14], [0, 1], {
     extrapolateLeft: "clamp",
     extrapolateRight: "clamp",
     easing: Easing.out(Easing.cubic),
@@ -47,9 +47,9 @@ export const StatCard = ({ stat, index, accent, text, muted, card }: StatCardPro
   const bar = numericValue !== null
     ? progress
     : spring({
-        frame: frame - 8 - index * 5,
+        frame: frame - 2 - index * 2,
         fps,
-        config: { damping: 18, stiffness: 90, mass: 0.7 },
+        config: { damping: 16, stiffness: 260, mass: 0.3, overshootClamping: true },
       });
 
   return (

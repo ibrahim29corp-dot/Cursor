@@ -1,15 +1,17 @@
 import { interpolate, spring } from "remotion";
 
 export const slamSpring = {
-  damping: 12,
-  stiffness: 210,
-  mass: 0.48,
+  damping: 16,
+  stiffness: 420,
+  mass: 0.28,
+  overshootClamping: true,
 };
 
 export const settleSpring = {
-  damping: 16,
-  stiffness: 90,
-  mass: 0.8,
+  damping: 18,
+  stiffness: 280,
+  mass: 0.36,
+  overshootClamping: true,
 };
 
 /** 1 on the beat, then back to 0. Driven by spring so the hit eases out. */
@@ -18,14 +20,14 @@ export const beatIntensity = (frame: number, fps: number, beatTimes: readonly nu
   for (const time of beatTimes) {
     const beatFrame = Math.round(time * fps);
     const dt = frame - beatFrame;
-    if (dt < 0 || dt > 8) {
+    if (dt < 0 || dt > 4) {
       continue;
     }
     const settled = spring({
       frame: dt,
       fps,
-      config: { damping: 16, stiffness: 280, mass: 0.28 },
-      durationInFrames: 8,
+      config: { damping: 18, stiffness: 460, mass: 0.22, overshootClamping: true },
+      durationInFrames: 4,
     });
     const impulse = interpolate(settled, [0, 1], [1, 0], {
       extrapolateLeft: "clamp",

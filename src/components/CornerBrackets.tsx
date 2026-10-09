@@ -12,7 +12,7 @@ export const CornerBrackets = ({ safeZone, color }: CornerBracketsProps) => {
   const enter = spring({
     frame,
     fps,
-    config: { damping: 16, stiffness: 120, mass: 0.7 },
+    config: { damping: 16, stiffness: 280, mass: 0.32, overshootClamping: true },
   });
   const scale = interpolate(enter, [0, 1], [0, 1]);
   const arm = 36;
