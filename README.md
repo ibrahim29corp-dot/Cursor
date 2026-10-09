@@ -48,7 +48,7 @@ Open `src/config.ts`.
 | `scenes` | Start time and length, in seconds. |
 | `beatTimes` | Seconds where the frame shakes and the type glitches. |
 
-The promo is three segments of 3 seconds, about 9 seconds total. Photos cut through the open. At 3 seconds they lock on `proofPhoto` until the stat cards leave at 6 seconds, then the cuts resume behind the end card. The last scene ends at 9 seconds.
+The promo is three segments of exactly 3 seconds: 9 seconds total. The open runs 0–3s. At 3 seconds the photos lock on `proofPhoto` and the stat cards hold until 6 seconds. At 6 seconds the end card takes over and the photo cuts resume until the video ends at 9 seconds. The scenes do not overlap.
 
 Every line above is drawn on screen, so the promo still reads with the sound off. Clip scenes also get a caption bar.
 
@@ -85,7 +85,7 @@ If a file is missing, that slot renders as a labeled rectangle and the preview s
 
 The included track, whooshes, and impacts are synthesized placeholders, not a commercial song. Replace `track.mp3` with a track you have rights to, then set `beatTimes` to that track's downbeats so the shakes land on the music. The shipped track was generated from the `beatTimes` already in config.
 
-Whoosh and impact files play at each scene change (0s, 2s, 6s, 12s, 17s).
+Whoosh and impact files play at each scene change (0s, 3s, 6s).
 
 ## Safe zones
 

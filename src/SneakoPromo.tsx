@@ -49,7 +49,7 @@ export const SneakoPromo = ({ layout }: SneakoPromoProps) => {
             </SceneFade>
           </Sequence>
           <Sequence from={toFrames(scenes.proof.from, fps)} durationInFrames={proofFrames}>
-            <SceneFade durationInFrames={proofFrames} enterFrames={0} exitFrames={4}>
+            <SceneFade durationInFrames={proofFrames} enterFrames={0} exitFrames={0}>
               <ProofScene
                 layout={layout}
                 stats={promoConfig.stats}
@@ -60,7 +60,7 @@ export const SneakoPromo = ({ layout }: SneakoPromoProps) => {
             </SceneFade>
           </Sequence>
           <Sequence from={toFrames(scenes.cta.from, fps)} durationInFrames={ctaFrames}>
-            <SceneFade durationInFrames={ctaFrames} enterFrames={4} exitFrames={0}>
+            <SceneFade durationInFrames={ctaFrames} enterFrames={0} exitFrames={0}>
               <CtaScene
                 layout={layout}
                 headline={promoConfig.cta.headline}

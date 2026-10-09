@@ -10,11 +10,12 @@ import type { Brand, Clip, Layout, SafeZone, SceneWindow, Stat } from "./types";
  * placeholder renders instead. Do not drop in estimated counts.
  */
 
-const overlapSeconds = 0.14;
+const segmentSeconds = 3;
 
 export const promoConfig = {
   fps: 30,
-  durationInSeconds: 9,
+  /** Three beats of 3 seconds: open, stats, end card. 9 seconds total. */
+  durationInSeconds: segmentSeconds * 3,
   compositions: {
     portrait: {
       id: "SneakoPromo9x16",
@@ -44,11 +45,11 @@ export const promoConfig = {
     landscape: { top: 72, right: 88, bottom: 88, left: 88 },
   } satisfies Record<Layout, SafeZone>,
   scenes: {
-    hook: { from: 0, duration: 3 },
+    hook: { from: 0, duration: segmentSeconds },
     who: { from: 0, duration: 0 },
-    proof: { from: 3, duration: 3 + overlapSeconds },
-    clips: { from: 6, duration: 0 },
-    cta: { from: 6, duration: 3 },
+    proof: { from: segmentSeconds, duration: segmentSeconds },
+    clips: { from: segmentSeconds * 2, duration: 0 },
+    cta: { from: segmentSeconds * 2, duration: segmentSeconds },
   } satisfies Record<"hook" | "who" | "proof" | "clips" | "cta", SceneWindow>,
   hook: "THE STREAM\nEVERYONE'S\nTALKING ABOUT",
   name: "SNEAKO",
@@ -86,7 +87,7 @@ export const promoConfig = {
    * Raise it if a new set of photos should breathe longer.
    */
   photoHoldFrames: 3,
-  /** Held still behind the stat cards from 3s to 6s. Cuts resume after that. */
+  /** Held still behind the stat cards for the whole second beat (3s–6s). Cuts resume at 6s. */
   proofPhoto: "images/sneako-02.jpg",
   photos: [
     "images/sneako-01.jpg",
