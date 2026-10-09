@@ -14,7 +14,7 @@ const overlapSeconds = 0.14;
 
 export const promoConfig = {
   fps: 30,
-  durationInSeconds: 20,
+  durationInSeconds: 9,
   compositions: {
     portrait: {
       id: "SneakoPromo9x16",
@@ -44,11 +44,11 @@ export const promoConfig = {
     landscape: { top: 72, right: 88, bottom: 88, left: 88 },
   } satisfies Record<Layout, SafeZone>,
   scenes: {
-    hook: { from: 0, duration: 4 + overlapSeconds },
-    who: { from: 4, duration: 4 },
-    proof: { from: 8, duration: 4 + overlapSeconds },
-    clips: { from: 12, duration: 4 + overlapSeconds },
-    cta: { from: 16, duration: 4 },
+    hook: { from: 0, duration: 3 },
+    who: { from: 0, duration: 0 },
+    proof: { from: 3, duration: 3 + overlapSeconds },
+    clips: { from: 6, duration: 0 },
+    cta: { from: 6, duration: 3 },
   } satisfies Record<"hook" | "who" | "proof" | "clips" | "cta", SceneWindow>,
   hook: "THE STREAM\nEVERYONE'S\nTALKING ABOUT",
   name: "SNEAKO",
@@ -86,7 +86,7 @@ export const promoConfig = {
    * Raise it if a new set of photos should breathe longer.
    */
   photoHoldFrames: 3,
-  /** Held still behind the stat cards from 8s to 12s. Cuts resume after that. */
+  /** Held still behind the stat cards from 3s to 6s. Cuts resume after that. */
   proofPhoto: "images/sneako-02.jpg",
   photos: [
     "images/sneako-01.jpg",

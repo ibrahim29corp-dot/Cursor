@@ -1,14 +1,12 @@
 import { AbsoluteFill, Sequence, interpolate, useCurrentFrame, useVideoConfig } from "remotion";
 import { AudioLayer } from "./components/AudioLayer";
 import { Backdrop } from "./components/Backdrop";
-import { ClipsScene } from "./components/ClipsScene";
 import { CornerBrackets } from "./components/CornerBrackets";
 import { CtaScene } from "./components/CtaScene";
 import { FilmGrain } from "./components/FilmGrain";
 import { HookScene } from "./components/HookScene";
 import { ProofScene } from "./components/ProofScene";
 import { SceneFade } from "./components/SceneFade";
-import { WhoScene } from "./components/WhoScene";
 import { EnergyContext } from "./components/energy";
 import { promoConfig } from "./config";
 import { beatIntensity, toFrames } from "./lib/motion";
@@ -28,9 +26,7 @@ export const SneakoPromo = ({ layout }: SneakoPromoProps) => {
   const xDir = interpolate(step, [0, 1, 2, 3], [1, -0.85, 0.65, -1]);
   const yDir = interpolate(step, [0, 1, 2, 3], [-0.4, 1, -0.75, 0.45]);
   const hookFrames = toFrames(scenes.hook.duration, fps);
-  const whoFrames = toFrames(scenes.who.duration, fps);
   const proofFrames = toFrames(scenes.proof.duration, fps);
-  const clipsFrames = toFrames(scenes.clips.duration, fps);
   const ctaFrames = toFrames(scenes.cta.duration, fps);
 
   return (
@@ -39,24 +35,12 @@ export const SneakoPromo = ({ layout }: SneakoPromoProps) => {
         <AbsoluteFill style={{ transform: `translate(${hit * 5 * xDir}px, ${hit * 3 * yDir}px)` }}>
           <Backdrop brand={brand} />
           <Sequence from={toFrames(scenes.hook.from, fps)} durationInFrames={hookFrames}>
-            <SceneFade durationInFrames={hookFrames} enterFrames={0} exitFrames={4}>
+            <SceneFade durationInFrames={hookFrames} enterFrames={0} exitFrames={0}>
               <HookScene
                 layout={layout}
                 hook={promoConfig.hook}
-                photos={promoConfig.photos}
-                holdFrames={promoConfig.photoHoldFrames}
-                safeZone={zone}
-                brand={brand}
-              />
-            </SceneFade>
-          </Sequence>
-          <Sequence from={toFrames(scenes.who.from, fps)} durationInFrames={whoFrames}>
-            <SceneFade durationInFrames={whoFrames} enterFrames={4} exitFrames={0}>
-              <WhoScene
-                layout={layout}
                 name={promoConfig.name}
                 role={promoConfig.role}
-                tagline={promoConfig.tagline}
                 photos={promoConfig.photos}
                 holdFrames={promoConfig.photoHoldFrames}
                 safeZone={zone}
@@ -75,18 +59,6 @@ export const SneakoPromo = ({ layout }: SneakoPromoProps) => {
               />
             </SceneFade>
           </Sequence>
-          <Sequence from={toFrames(scenes.clips.from, fps)} durationInFrames={clipsFrames} premountFor={12}>
-            <SceneFade durationInFrames={clipsFrames} enterFrames={4} exitFrames={4}>
-              <ClipsScene
-                layout={layout}
-                clips={promoConfig.clips}
-                photos={promoConfig.photos}
-                holdFrames={promoConfig.photoHoldFrames}
-                safeZone={zone}
-                brand={brand}
-              />
-            </SceneFade>
-          </Sequence>
           <Sequence from={toFrames(scenes.cta.from, fps)} durationInFrames={ctaFrames}>
             <SceneFade durationInFrames={ctaFrames} enterFrames={4} exitFrames={0}>
               <CtaScene
@@ -97,6 +69,7 @@ export const SneakoPromo = ({ layout }: SneakoPromoProps) => {
                 logoSrc={promoConfig.assets.logo}
                 photos={promoConfig.photos}
                 holdFrames={promoConfig.photoHoldFrames}
+                captions={promoConfig.clips.map((clip) => clip.caption)}
                 safeZone={zone}
                 brand={brand}
               />
@@ -137,13 +110,7 @@ export const SneakoPromo = ({ layout }: SneakoPromoProps) => {
           track={promoConfig.audio.track}
           whoosh={promoConfig.audio.whoosh}
           impact={promoConfig.audio.impact}
-          transitions={[
-            scenes.hook.from,
-            scenes.who.from,
-            scenes.proof.from,
-            scenes.clips.from,
-            scenes.cta.from,
-          ]}
+          transitions={[scenes.hook.from, scenes.proof.from, scenes.cta.from]}
         />
       </AbsoluteFill>
     </EnergyContext.Provider>

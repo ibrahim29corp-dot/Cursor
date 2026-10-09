@@ -17,6 +17,7 @@ export type CtaSceneProps = {
   logoSrc: string;
   photos: readonly string[];
   holdFrames: number;
+  captions: readonly string[];
   safeZone: SafeZone;
   brand: Brand;
 };
@@ -56,6 +57,7 @@ export const CtaScene = ({
   logoSrc,
   photos,
   holdFrames,
+  captions,
   safeZone,
   brand,
 }: CtaSceneProps) => {
@@ -84,6 +86,10 @@ export const CtaScene = ({
   const pulse = interpolate(Math.sin((frame / fps) * Math.PI * 4.2), [-1, 1], [1, 1.08]);
   const glow = interpolate(Math.sin((frame / fps) * Math.PI * 4.2), [-1, 1], [16, 52]);
   const buttonScale = buttonInScale * pulse * (1 + energy * 0.07);
+  const captionEvery = Math.max(8, holdFrames * 3);
+  const caption =
+    captions.length === 0 ? "" : captions[Math.floor(frame / captionEvery) % captions.length];
+  const captionSize = portrait ? 64 : 48;
 
   return (
     <AbsoluteFill>
@@ -125,6 +131,24 @@ export const CtaScene = ({
             />
           </div>
           <div style={{ width: portrait ? "100%" : "auto", maxWidth: textWidth }}>
+            {caption ? (
+              <div
+                style={{
+                  marginBottom: 14,
+                  fontFamily: anton,
+                  fontSize: captionSize,
+                  color: brand.text,
+                  letterSpacing: 1,
+                  lineHeight: 0.9,
+                  textAlign: portrait ? "center" : "left",
+                  background: withAlpha(brand.background, 0.82),
+                  borderLeft: `8px solid ${brand.accent}`,
+                  padding: portrait ? "12px 18px" : "10px 16px",
+                }}
+              >
+                {caption}
+              </div>
+            ) : null}
             <SlamText
               text={headline}
               fontFamily={anton}

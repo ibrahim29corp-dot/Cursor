@@ -1,6 +1,6 @@
 # Sneako on Kick
 
-A 20-second Remotion promo, 1080×1920 at 30fps, built to send people to [kick.com/sneako](https://kick.com/sneako). The same scenes also render as 1920×1080.
+A 9-second Remotion promo, 1080×1920 at 30fps, built to send people to [kick.com/sneako](https://kick.com/sneako). The same scenes also render as 1920×1080.
 
 Copy, stats, colors, timing, beat hits, and file paths all live in [`src/config.ts`](src/config.ts). Swap those values instead of editing scene components.
 
@@ -48,7 +48,7 @@ Open `src/config.ts`.
 | `scenes` | Start time and length, in seconds. |
 | `beatTimes` | Seconds where the frame shakes and the type glitches. |
 
-Scene `duration` values include a 0.14s overlap into the next scene so the change is a crossfade, not a cut. Each segment is 4 seconds. The name lockup ends at 8 seconds without that overlap, so the stat cards can lock onto `proofPhoto` until 12 seconds. Photo cuts resume when those cards leave. The last scene ends at 20 seconds. If you move a start time, keep the timeline inside 20 seconds.
+The promo is three segments of 3 seconds, about 9 seconds total. Photos cut through the open. At 3 seconds they lock on `proofPhoto` until the stat cards leave at 6 seconds, then the cuts resume behind the end card. The last scene ends at 9 seconds.
 
 Every line above is drawn on screen, so the promo still reads with the sound off. Clip scenes also get a caption bar.
 
@@ -98,11 +98,9 @@ Set `debug.showSafeZone` to `true` to draw the box while you check a layout, the
 ```
 src/config.ts                 copy, stats, paths, timing, beats
 src/SneakoPromo.tsx           timeline shared by both aspect ratios
-src/components/HookScene.tsx  0–4s hook
-src/components/WhoScene.tsx   4–8s name lockup
-src/components/ProofScene.tsx 8–12s stat cards on one still photo
-src/components/ClipsScene.tsx 12–16s photo cuts and captions
-src/components/CtaScene.tsx   16–20s end card
+src/components/HookScene.tsx  0–3s name, hook, photo cuts
+src/components/ProofScene.tsx 3–6s stat cards on one still photo
+src/components/CtaScene.tsx   6–9s end card, captions, photo cuts
 src/components/StatCard.tsx   one proof card
 src/components/SlamText.tsx   kinetic type
 ```
